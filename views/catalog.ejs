@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" style="background: linear-gradient(2deg, white, rgb(14,47,8) 34%);">
+    <%- include('./partials/head.ejs') %>
+<body class="d-flex flex-column min-vh-100" style="margin-bottom: 0px;background: linear-gradient(0deg, #093824 34%, white 100%);width: 100%;height: 100%;">
+    <%- include('./partials/nav.ejs') %>
+    <div class="container">
+<!--        <div class="row mx-auto">
+            <div class="col-md-4" style="background: rgba(244,247,245,0.78);height: 500px;margin-top: 40px;border-radius: 10px;border-style: solid;border-color: rgb(147,147,147);">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center" style="margin-bottom: 20px;">Course Search</h2>
+                        <h5 class="catalogHeader">Semester</h5>
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle dropdowns" aria-expanded="false" data-bs-toggle="dropdown" type="button">Dropdown </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">First Item</a>
+                                <a class="dropdown-item" href="#">Second Item</a>
+                                <a class="dropdown-item" href="#">Third Item</a>
+                            </div>
+                        </div>
+                        <h5 class="catalogHeader">Course</h5>
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle dropdowns" aria-expanded="false" data-bs-toggle="dropdown" type="button">Dropdown </button>
+                            <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                        </div>
+                        <h5 class="catalogHeader">Location</h5>
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle dropdowns" aria-expanded="false" data-bs-toggle="dropdown" type="button">Dropdown </button>
+                            <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                        </div>
+                        <h5 class="catalogHeader">Weeks</h5>
+                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle dropdowns" aria-expanded="false" data-bs-toggle="dropdown" type="button">Dropdown </button>
+                            <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                        </div><button class="btn btn-outline-success active text-center" type="button" style="margin-right: 25%;margin-top: 8px;margin-left: 35%;">Search</button>
+                    </div>
+                </div>
+            </div>
+            -->
+            <div class="col-md-7 mx-auto" style="background: rgba(244,247,245,0.78);margin-top: 40px;border-radius: 10px;border-style: solid;border-color: rgb(147,147,147);margin-right: 0;">
+                <div class="card m-1" style="overflow-y: auto;" style="margin-top: 10px;height: 150px;">
+                    <% if (courses.length > 0) { %>
+                        <% courses.forEach(course => { %>
+                            <div class="card-body">
+                                <h3><%= course.title %></h3>
+                                <p><strong><%= course.subject %> - <%= course.teacher %> - <%= course.credits %> credits.</strong></p>
+                                <p><%= course.description %></p>
+                                <form method="post" action="/<%= course._id %>">
+                                <button class="btn btn-success d-block" name="coursebtn" value="<%= course._id %>" type="submit">ADD</a></form>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <p>There are no courses to display.</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/bootstrap.min.js"/></script>
+    <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
